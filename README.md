@@ -45,22 +45,39 @@ Nginx sits in front of the stack as a TLS-terminating reverse proxy. Keycloak ac
 
 ```
 .
-├── README.md                          ← you are here
-├── PUBLISHING_GUIDE.md                ← step-by-step guide to push this repo to GitHub
+cloud-security-lab-portfolio/
+│
+├── README.md
+├── SETUP.md
 ├── LICENSE
-└── docs/
-    ├── reports/                       ← full write-up for each phase (Markdown)
-    │   ├── phase1-infrastructure-setup.md
-    │   ├── phase2-iam-policy.md
-    │   ├── phase3-encryption.md
-    │   ├── phase4-incident-response-runbook.md
-    │   └── phase5-security-audit-compliance.md
-    └── screenshots/                   ← evidence screenshots, grouped by phase
-        ├── phase1/  (10 steps · 17 screenshots)
-        ├── phase2/  (9 steps  · 22 screenshots)
-        ├── phase3/  (6 steps  · 17 screenshots)
-        ├── phase4/  (2 steps  · 6 screenshots)
-        └── phase5/  (1 diagram)
+├── .gitignore
+│
+├── architecture/
+│   ├── architecture-diagram.png
+│   └── architecture.md
+│
+├── docs/
+│   ├── reports/
+│   │   ├── phase1-infrastructure-setup.md
+│   │   ├── phase2-iam-policy.md
+│   │   ├── phase3-encryption.md
+│   │   ├── phase4-incident-response-runbook.md
+│   │   └── phase5-security-audit-compliance.md
+│   │
+│   └── screenshots/
+│       ├── README.md
+│       ├── phase1/
+│       ├── phase2/
+│       ├── phase3/
+│       ├── phase4/
+│       └── phase5/
+│
+├── security-monitoring/
+│   ├── fail2ban/
+│   ├── logs/
+│   └── vulnerability-scanning/
+│
+└── .gitignore
 ```
 
 Every screenshot is named `NN-step-description.png` so it sorts in the exact order the step was performed, and every phase report's images link straight into `docs/screenshots/<phase>/`, so the write-up and the evidence stay in sync.
@@ -129,10 +146,9 @@ Closing audit of the whole environment: Trivy vulnerability scans of every conta
 
 ---
 
-## 👥 Authors
+## 👥 Author
 
-Mahrukh · Shaina · Laiba
-Project for **CY464 — Cloud Security**
+Mahrukh 
 
 ## 📄 License
 
