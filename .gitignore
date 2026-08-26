@@ -1,4 +1,12 @@
+# Runtime log files — never commit real logs (may contain IPs, tokens, session data)
+*.log
+security-monitoring/logs/*.log
+security-monitoring/logs/*.gz
+
+# Trivy scan raw output (keep only the curated summary in README.md)
+security-monitoring/vulnerability-scanning/*.json
+security-monitoring/vulnerability-scanning/*.sarif
+
+# OS/editor cruft
 .DS_Store
 Thumbs.db
-*.log
-.env
