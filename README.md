@@ -6,7 +6,7 @@ A fully self-hosted, Docker-based cloud platform built end-to-end with enterpris
 
 > Built and documented in 5 phases — from bare VM to an audited, monitored, production-style security stack.
 
-![Architecture Diagram](architecture/architecture-diagram.png)
+![Infrastructure Diagram](docs/screenshots/phase5/01-infrastructure-diagram.png)
 
 ---
 
@@ -17,7 +17,7 @@ This lab simulates a small enterprise cloud environment, deployed entirely on a 
 - **Identity & Access Management** — centralized auth, SSO, RBAC, MFA
 - **Data protection** — TLS in transit, server-side encryption at rest, centralized secrets/key management
 - **Security monitoring & incident response** — intrusion detection/prevention and a documented runbook
-- **Governance** — vulnerability scanning and a formal audit against CIS Benchmark controls and GDPR
+- **Governance** — vulnerability scanning and a formal audit against CIS Benchmark controls and GDPR articles
 
 ## 🧱 Tech Stack
 
@@ -39,8 +39,6 @@ This lab simulates a small enterprise cloud environment, deployed entirely on a 
 
 Nginx sits in front of the stack as a TLS-terminating reverse proxy. Keycloak acts as the single identity provider for the environment; Nextcloud federates to it via OIDC for Single Sign-On, while role membership in Keycloak (Admin / Editor / Viewer) maps directly onto Nextcloud's authorization groups. MinIO provides S3-compatible object storage, PostgreSQL backs Nextcloud's application data, and HashiCorp Vault centralizes all secrets, credentials, and key material so nothing sensitive lives in plaintext config. Fail2ban watches Nginx/Nextcloud logs in real time and automatically bans brute-force sources.
 
-📄 **Full breakdown** — component roles, auth/request flow, and trust boundaries: [`architecture/architecture.md`](architecture/architecture.md)
-
 ---
 
 ## 📂 Repository Structure
@@ -50,14 +48,6 @@ Nginx sits in front of the stack as a TLS-terminating reverse proxy. Keycloak ac
 ├── README.md                          ← you are here
 ├── PUBLISHING_GUIDE.md                ← step-by-step guide to push this repo to GitHub
 ├── LICENSE
-├── architecture/
-│   ├── architecture-diagram.png
-│   └── architecture.md                ← components, auth flow, trust boundaries
-├── security-monitoring/
-│   ├── README.md
-│   ├── fail2ban/                      ← brute-force detection & auto-ban (6 screenshots)
-│   ├── logs/                          ← log sources & GoAccess analysis
-│   └── vulnerability-scanning/        ← Trivy CVE scan results
 └── docs/
     ├── reports/                       ← full write-up for each phase (Markdown)
     │   ├── phase1-infrastructure-setup.md
@@ -106,7 +96,6 @@ TLS enabled end-to-end via Nginx (data in transit), Nextcloud Server-Side Encryp
 Fail2ban deployed against Nginx/Nextcloud auth logs to detect and auto-block brute-force login attempts, backed by a full incident response runbook covering **Detection → Containment → Investigation → Recovery → Lessons Learned**.
 
 📄 [Full runbook](docs/reports/phase4-incident-response-runbook.md) · 🖼️ [Screenshots](docs/screenshots/phase4)
-🛰️ [Live monitoring setup — fail2ban, logs, vulnerability scanning](security-monitoring)
 
 ## 📊 Phase 5 — Security Audit & Compliance Report
 
